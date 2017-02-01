@@ -24,6 +24,12 @@ class BullyBot {
 	 */
 	public $enableEmotes = false;
 
+	/**
+	 * Custom RNG
+	 * @param int $min Minimum value for RNG
+	 * @param int $max Maximum value for RNG
+	 * @return int Random value from given range
+	 */
 	private function RandomNumber($min, $max) {
 		return mt_rand($min, $max);
 	}
@@ -56,11 +62,12 @@ class BullyBot {
 		$user = $this->user;
 		require ("bully.list.php");
 		
-		// Select a number between 0 and the number of bully list
+		// Select a number between 0 and the number of insult list size
 		$randomNumber = $this->RandomNumber(0, (count($bullyList) -1) );
 
 		// Pick the random insult
 		$bullyResponse = $bullyList[$randomNumber];
+
 		return $bullyResponse;
 	}
 
@@ -88,6 +95,7 @@ class BullyBot {
 			' :tf:'
 		);
 
+		// Return a random array element
 		return $emoteList[$this->RandomNumber(0, (count($emoteList) -1) )];
 	}
 
