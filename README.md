@@ -9,10 +9,7 @@ This API should be used in non-civilized Twitch channels. The output is a random
 
 Usage (for Nightbot):
 ----------
-```!commands add !bully $(urlfetch YOUR_URL/?u=$(1))```
-
-`$(urlfetch x)` - custom API, where x is your URL, e.g. `http://example.com/?u=user`
-
-`/?u=$(1)` - chat variable, where $(1) is your string, e.g. `!bully username`
+* Host it somewhere
+* Add the Nightbot command in your chat: ```!commands add !bully $(urlfetch YOUR_URL/?u=$(1))```
 
 !bully command name is optional
