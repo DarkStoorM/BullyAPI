@@ -4,6 +4,7 @@ Custom API for Twitch bots.
 ----------
 Warning: 
 ----------
+"MATURE" CONTENT.
 This API should be used in non-civilized Twitch channels. The output is a random insult towards requested user.
 
 Usage (for Nightbot):
