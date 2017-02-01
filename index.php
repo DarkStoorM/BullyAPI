@@ -1,7 +1,7 @@
 <?php
 /**
  * Twitch BullyBot insult list
- * @author DarkStoorM
+ * @author Bartosz "DarkstoorM" Sieprawski <b.sieprawski@op.pl>
  * @license MIT License
  */
 	

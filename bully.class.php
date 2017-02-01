@@ -1,7 +1,7 @@
 <?php
 /**
  * Twitch BullyBot Class
- * @author DarkStoorM
+ * @author Bartosz "DarkstoorM" Sieprawski <b.sieprawski@op.pl>
  * @license MIT License
  */
 class BullyBot {
