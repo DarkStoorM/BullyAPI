@@ -12,6 +12,12 @@ class BullyBot {
 	private $user = "";
 
 	/**
+	 * Custom response when the username is invalid. Chat output for the bot
+	 * @var string
+	 */
+	private $invalidUserResponse = "NO BULLY FOR YOU";
+
+	/**
 	 * Checks if the user passed in the URL parameter is valid according to the Twitch username rules
 	 * @return bool User status check
 	 */
@@ -56,7 +62,7 @@ class BullyBot {
 			$user = $this->user;
 		// If the username was not valid, return the message instead
 		else {
-			echo "NO BULLY FOR YOU";
+			echo $this->invalidUserResponse;
 			return;
 		}
 		
