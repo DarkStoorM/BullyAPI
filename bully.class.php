@@ -92,7 +92,12 @@ class BullyBot {
 			' OMGScoots',
 			' BasedGod',
 			' NaM',
-			' :tf:'
+			' :tf:',
+			' BigBrother',
+			' HassaanChop',
+			' SoBayed',
+			' SuperVinlin',
+			' MVGame'
 		);
 
 		// Return a random array element
