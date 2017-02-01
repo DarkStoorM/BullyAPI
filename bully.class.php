@@ -18,6 +18,17 @@ class BullyBot {
 	private $invalidUserResponse = "NO BULLY FOR YOU";
 
 	/**
+	 * Twitch emote toggle. If the emotes are enabled, they will be appended to the strings.
+	 * Disabled by default
+	 * @var boolean
+	 */
+	public $enableEmotes = false;
+
+	private function RandomNumber($min, $max) {
+		return mt_rand($min, $max);
+	}
+
+	/**
 	 * Checks if the user passed in the URL parameter is valid according to the Twitch username rules
 	 * @return bool User status check
 	 */
@@ -46,11 +57,38 @@ class BullyBot {
 		require ("bully.list.php");
 		
 		// Select a number between 0 and the number of bully list
-		$randomNumber = mt_rand(0, (count($bullyList) -1) );
+		$randomNumber = $this->RandomNumber(0, (count($bullyList) -1) );
 
 		// Pick the random insult
 		$bullyResponse = $bullyList[$randomNumber];
 		return $bullyResponse;
+	}
+
+	/**
+	 * Returns an emote string.
+	 * You can also use emotes from channels that Nightbot is subbed to.
+	 * Use custom emotes with caution, as some channels may lose their partnership
+	 * @return string Emote
+	 */
+	private function AppendEmote() {
+		// Twitch / BTTV Emote list
+		$emoteList = array(
+			' TriHard',
+			' LUL',
+			' 4Head',
+			' EleGiggle',
+			' MingLee',
+			' drakoPalm',
+			' FailFish',
+			' OpieOP',
+			' FreakinStinkin',
+			' OMGScoots',
+			' BasedGod',
+			' NaM',
+			' :tf:'
+		);
+
+		return $emoteList[$this->RandomNumber(0, (count($emoteList) -1) )];
 	}
 
 	/**
@@ -65,8 +103,12 @@ class BullyBot {
 			echo $this->invalidUserResponse;
 			return;
 		}
-		
+
+		// Pick an insult with passed user
 		$insult = $this->GetBully($user);
+
+		// Append emotes if enabled
+		$insult .= $this->enableEmotes ? $this->AppendEmote() : "";
 
 		// Echo out the insult with given username
 		echo $insult;
