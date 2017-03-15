@@ -45,6 +45,17 @@ class BullyBot {
 
 		$user = $_GET["u"];
 
+		// Depending on the command implementation, when user sent a command like:
+		// !bully <-no additional string, the script received a literal "null" string
+		// not a null type, but a (4)string "null" and it interpreted the username as
+		// a valid 4-character username. Since it's a valid username and Null is also a
+		// streamer, we can omit this.
+		//
+		// The reason why it's not [if ($username !== or != null)] is because the content
+		// sent in the parameter is casted as a string, so type null becomes (string) null
+		if ($user == "null")
+			return false;
+		
 		// It doesn't need any further validation as long as it matches the pattern
 		if (preg_match("/^[a-z0-9_]{1,25}$/i", $user)) {
 			$this->user = $user;
