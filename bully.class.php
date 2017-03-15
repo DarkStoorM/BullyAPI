@@ -10,7 +10,15 @@ class BullyBot {
 	 * @var string
 	 */
 	private $user = "";
-
+	
+	/**
+	 * Array of usernames to ignore if someone wants to
+	 * @var array
+	 */
+	private $bullyIgnore = array(
+		''
+	);
+	
 	/**
 	 * Custom response when the username is invalid. Chat output for the bot
 	 * @var string
@@ -33,7 +41,7 @@ class BullyBot {
 	private function RandomNumber($min, $max) {
 		return mt_rand($min, $max);
 	}
-
+	
 	/**
 	 * Checks if the user passed in the URL parameter is valid according to the Twitch username rules
 	 * @return bool User status check
@@ -54,6 +62,11 @@ class BullyBot {
 		// The reason why it's not [if ($username !== or != null)] is because the content
 		// sent in the parameter is casted as a string, so type null becomes (string) null
 		if ($user == "null")
+			return false;
+		
+		// If the requested username (a string) is on our whitelist, return false
+		// It's basically not a user, but just a string to ignore
+		if (in_array($user, $this->bullyIgnore))
 			return false;
 		
 		// It doesn't need any further validation as long as it matches the pattern
@@ -100,7 +113,6 @@ class BullyBot {
 			' FailFish',
 			' OpieOP',
 			' FreakinStinkin',
-			' OMGScoots',
 			' BasedGod',
 			' NaM',
 			' :tf:',
